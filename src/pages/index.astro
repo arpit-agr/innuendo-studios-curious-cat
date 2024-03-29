@@ -1,18 +1,47 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
+
+const docsList = [
+	{
+		label: 'Astro Docs',
+		href: 'https://docs.astro.build/'
+	},
+	{
+		label: 'Tailwind Docs',
+		href: 'https://tailwindcss.com/docs/installation'
+	},
+	{
+		label: 'Utopia',
+		href: 'https://utopia.fyi/'
+	},
+	{
+		label: 'Every Layout',
+		href: 'https://every-layout.dev/'
+	},
+	{
+		label: 'Partytown Docs',
+		href: 'https://partytown.builder.io/'
+	},
+	{
+		label: 'Cube CSS',
+		href: 'https://cube.fyi/'
+	}
+];
 ---
 
-<Layout title="Welcome to Astro.">
-  <article class="wrapper flow">
-    <h1>CUBE CSS core setup</h1>
-    <div class="switcher">
-      <h2 class="text-primary">A heading and paragraph in two columns</h2>
-      <p>
-        Donec sed odio dui. Donec sed odio dui. Vivamus sagittis lacus vel augue
-        laoreet rutrum faucibus dolor auctor. Vivamus sagittis lacus vel augue
-        laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel
-        scelerisque nisl consectetur et.
-      </p>
-    </div>
-  </article>
+<Layout title="🚨🚨🚨">
+	<article class="flow">
+		<h1>Hello World</h1>
+		<ul class="flow flow-space-2xs">
+			{
+				docsList.map(item => {
+					return (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</article>
 </Layout>
