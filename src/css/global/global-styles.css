@@ -5,9 +5,48 @@
   project: https://cube.fyi/css.html
 */
 body {
+	padding: var(--gutter);
 	background: var(--color-light);
 	color: var(--color-dark);
 	font-size: var(--size-step-0);
 	font-family: var(--font-base);
 	line-height: var(--leading-standard);
+}
+
+h1,
+h2 {
+	font-weight: var(--font-bold);
+	line-height: var(--leading-flat);
+}
+
+h3,
+h4 {
+	font-weight: var(--font-medium);
+	line-height: var(--leading-fine);
+}
+
+p {
+	max-inline-size: var(--measure);
+}
+
+:where(ol, ul):not([role='list']) {
+	padding-inline-start: var(--space-m);
+
+	:where(li) {
+		padding-inline-start: var(--space-3xs);
+	}
+}
+
+/* Set foucs visible style */
+@media (--motionOK) {
+	:where(:focus-visible) {
+		transition: outline-offset 145ms var(--ease-2);
+	}
+	:where(:not(:active):focus-visible) {
+		transition-duration: 0.25s;
+	}
+}
+
+:where(:not(:active):focus-visible) {
+	outline-offset: 2px;
 }
