@@ -29,6 +29,10 @@
 :where(body) {
 	min-block-size: 100vh;
 	line-height: 1.5;
+
+	@supports (min-block-size: 100svh) {
+		min-block-size: 100svh;
+	}
 }
 
 /* Remove default margin in favour of better control in authored CSS */
