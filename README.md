@@ -1,10 +1,11 @@
 # Astro CUBE CSS Boilerplate
 
-Based on the [CUBE CSS Boilerplate](https://github.com/Set-Creative-Studio/cube-boilerplate). 
+Based on the [CUBE CSS Boilerplate](https://github.com/Set-Creative-Studio/cube-boilerplate).
 
-The Astro CUBE CSS Boilerplate is a simple, modern, web platform native starting point with sensible defaults. You get the advantages of modern CSS, with the aid of utility classes, and the affordances of design token architecture. 
+The Astro CUBE CSS Boilerplate is a simple, modern, web platform native starting point with sensible defaults. You get the advantages of modern CSS, with the aid of utility classes, and the affordances of design token architecture.
 
 Uses:
+
 - [Astro](https://astro.build/), a web framework for content-driven websites
 - [Utopia](https://utopia.fyi/), for responsive typography, spacing, and sizing
 - [Cube CSS](https://cube.fyi/), a pragmatric and simple CSS methodology
