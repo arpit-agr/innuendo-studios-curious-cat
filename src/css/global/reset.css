@@ -143,6 +143,7 @@
 }
 
 /* Anything that has been anchored to should have extra scroll margin */
+/* TODO: Adjust this if there is a fixed header */
 :target {
 	scroll-margin-block: 5ex;
 }
