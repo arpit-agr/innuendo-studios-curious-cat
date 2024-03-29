@@ -1,8 +1,20 @@
 :root {
-  --gutter: var(--space-s-l);
-  --transition-base: 250ms ease;
-  --transition-movement: 200ms linear;
-  --transition-fade: 300ms ease;
-  --transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
-  --leading-standard: 1.5;
+	--measure: 60ch;
+	--gutter: var(--space-s-l);
+	--transition-base: 250ms ease;
+	--transition-movement: 200ms linear;
+	--transition-fade: 300ms ease;
+	--transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
 }
+
+/* https://open-props.style/#media-queries */
+/* Capability Vars */
+@custom-media --mouse (hover) and (pointer: fine);
+@custom-media --touch (hover: none) and (pointer: coarse);
+@custom-media --HDcolor (dynamic-range: high) or (color-gamut: p3);
+
+/* Preference Vars */
+@custom-media --OSdark (prefers-color-scheme: dark);
+@custom-media --OSlight (prefers-color-scheme: light);
+@custom-media --motionOK (prefers-reduced-motion: no-preference);
+@custom-media --motionNotOK (prefers-reduced-motion: reduce);
