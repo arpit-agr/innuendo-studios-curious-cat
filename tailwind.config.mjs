@@ -29,9 +29,9 @@ export default {
   safelist: [],
   theme: {
     screens: {
-			sm: `${viewportTokens.min}px`,
-			md: `${viewportTokens.mid}px`,
-			lg: `${viewportTokens.max}px`,
+      sm: `${viewportTokens.min / 16}rem`,
+      md: `${viewportTokens.mid / 16}rem`,
+      lg: `${viewportTokens.max / 16}rem`
     },
     colors,
     spacing,
