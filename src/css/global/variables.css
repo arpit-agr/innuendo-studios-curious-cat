@@ -8,6 +8,15 @@
 }
 
 /* https://open-props.style/#media-queries */
+/* Viewport Vars */
+@custom-media --sm-n-above (min-width: 30em);
+@custom-media --md-n-above (min-width: 48em);
+@custom-media --lg-n-above (min-width: 80em);
+
+@custom-media --sm-n-below (max-width: 29.9375em);
+@custom-media --md-n-below (max-width: 47.9375em);
+@custom-media --lg-n-below (max-width: 79.9375em);
+
 /* Capability Vars */
 @custom-media --mouse (hover) and (pointer: fine);
 @custom-media --touch (hover: none) and (pointer: coarse);
@@ -18,3 +27,4 @@
 @custom-media --OSlight (prefers-color-scheme: light);
 @custom-media --motionOK (prefers-reduced-motion: no-preference);
 @custom-media --motionNotOK (prefers-reduced-motion: reduce);
+@custom-media --forcedColors (forced-colors: active);

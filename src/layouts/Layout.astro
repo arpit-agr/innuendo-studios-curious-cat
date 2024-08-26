@@ -1,21 +1,24 @@
 ---
-import '../css/global.css';
+import '../css/style.css';
+
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const {title} = Astro.props;
+const {title, description} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		{!!description && <meta name="description" content={description} />}
+		<!-- favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body>
 		<slot />

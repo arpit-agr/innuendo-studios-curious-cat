@@ -1,47 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const docsList = [
-	{
-		label: 'Astro Docs',
-		href: 'https://docs.astro.build/'
-	},
-	{
-		label: 'Tailwind Docs',
-		href: 'https://tailwindcss.com/docs/installation'
-	},
-	{
-		label: 'Utopia',
-		href: 'https://utopia.fyi/'
-	},
-	{
-		label: 'Every Layout',
-		href: 'https://every-layout.dev/'
-	},
-	{
-		label: 'Partytown Docs',
-		href: 'https://partytown.builder.io/'
-	},
-	{
-		label: 'Cube CSS',
-		href: 'https://cube.fyi/'
-	}
-];
 ---
 
 <Layout title="🚨🚨🚨">
-	<article class="flow">
-		<h1>Hello World</h1>
-		<ul class="flow flow-space-2xs">
-			{
-				docsList.map(item => {
-					return (
-						<li>
-							<a href={item.href}>{item.label}</a>
-						</li>
-					);
-				})
-			}
-		</ul>
+	<article>
+		<h1>Hello world</h1>
 	</article>
 </Layout>

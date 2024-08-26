@@ -29,7 +29,7 @@
 :where(body) {
 	min-block-size: 100vh;
 	line-height: 1.5;
-	-webkit-font-smoothing: antialiased;
+	/* -webkit-font-smoothing: antialiased; */
 
 	@supports (min-block-size: 100svh) {
 		min-block-size: 100svh;
@@ -37,7 +37,7 @@
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-:where(body, h1, h2, h3, h4, p, ol, ul, figure, blockquote, dl, dd, hr) {
+:where(body, h1, h2, h3, h4, p, ol, ul, figure, blockquote, pre, dl, dd, hr) {
 	margin: 0;
 }
 
@@ -140,7 +140,7 @@
 		[tabindex]:not([tabindex*='-'])
 	) {
 	touch-action: manipulation;
-	-webkit-tap-highlight-color: transparent;
+	/* -webkit-tap-highlight-color: transparent; */
 }
 
 /* Anything that has been anchored to should have extra scroll margin */

@@ -6,7 +6,7 @@
 @import 'tailwindcss/components';
 
 @import 'global/variables.css';
-@import 'global/global-styles.css';
+@import 'global/global.css';
 
 /* 
 See issue: https://github.com/frankstallone/astro-cube-boilerplate/issues/1
@@ -24,15 +24,15 @@ Any custom styles you add to the base, components, or utilities layers will only
 Source: https://tailwindcss.com/docs/adding-custom-styles#removing-unused-custom-css
 */
 @import 'blocks/prose.css' layer(components);
-@import 'components/box.css' layer(components);
-@import 'components/cluster.css' layer(components);
-@import 'components/flow.css' layer(components);
-@import 'components/grid.css' layer(components);
-@import 'components/icon.css' layer(components);
-@import 'components/repel.css' layer(components);
-@import 'components/sidebar.css' layer(components);
-@import 'components/switcher.css' layer(components);
-@import 'components/wrapper.css' layer(components);
+@import 'composition/box.css' layer(components);
+@import 'composition/cluster.css' layer(components);
+@import 'composition/flow.css' layer(components);
+@import 'composition/grid.css' layer(components);
+@import 'composition/icon.css' layer(components);
+@import 'composition/repel.css' layer(components);
+@import 'composition/sidebar.css' layer(components);
+@import 'composition/switcher.css' layer(components);
+@import 'composition/wrapper.css' layer(components);
 @import 'utilities/region.css' layer(components);
 @import 'utilities/visually-hidden.css' layer(components);
 

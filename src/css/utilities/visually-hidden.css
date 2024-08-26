@@ -2,14 +2,14 @@
 VISUALLY HIDDEN UTILITY
 Info: https://piccalil.li/quick-tip/visually-hidden/ 
 */
-.visually-hidden {
+.visually-hidden:not(:focus):not(:active) {
+	position: absolute;
+	block-size: 0;
+	inline-size: 1px;
+	margin: 0;
+	padding: 0;
 	border: 0;
 	clip: rect(0 0 0 0);
-	height: 0;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
 	white-space: nowrap;
+	overflow: hidden;
 }
