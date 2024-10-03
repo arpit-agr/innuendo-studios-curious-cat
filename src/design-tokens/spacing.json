@@ -2,118 +2,153 @@
 	"title": "Spacing",
 	"description": "Consistent spacing sizes, based on a ratio, with min and max sizes. This allows you to set spacing based on the context size. For example, min for mobile and max for desktop browsers.",
 	"meta": {
-		"scaleGenerator": "https://utopia.fyi/space/calculator/?c=330,18,1.2,1200,24,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l|s-xl&g=s,l,xl,12"
+		"scaleGenerator": "https://utopia.fyi/space/calculator?c=320,17,1.125,1280,19.8,1.2,7,2,&s=0.75|0.5|0.25|0.125|0.0625,1.5|2|3|4|6|8|10,s-l|s-xl|m-s&g=s,l,xl,12"
 	},
 	"items": [
 		{
 			"name": "Zero",
 			"min": 0,
-			"max": 1
+			"max": 0.1
+		},
+		{
+			"name": "5XS",
+			"min": 1,
+			"max": 1.01
+		},
+		{
+			"name": "4XS",
+			"min": 2,
+			"max": 2.01
 		},
 		{
 			"name": "3XS",
-			"min": 5,
-			"max": 6
+			"min": 4,
+			"max": 5
 		},
 		{
 			"name": "2XS",
 			"min": 9,
-			"max": 12
+			"max": 10
 		},
 		{
 			"name": "XS",
-			"min": 14,
-			"max": 18
+			"min": 13,
+			"max": 15
 		},
 		{
 			"name": "S",
-			"min": 18,
-			"max": 24
+			"min": 17,
+			"max": 20
 		},
 		{
 			"name": "M",
-			"min": 27,
-			"max": 36
+			"min": 26,
+			"max": 30
 		},
 		{
 			"name": "L",
-			"min": 36,
-			"max": 48
+			"min": 34,
+			"max": 40
 		},
 		{
 			"name": "XL",
-			"min": 54,
-			"max": 72
+			"min": 51,
+			"max": 59
 		},
 		{
 			"name": "2XL",
-			"min": 72,
-			"max": 96
+			"min": 68,
+			"max": 79
 		},
 		{
 			"name": "3XL",
-			"min": 108,
-			"max": 144
+			"min": 102,
+			"max": 119
 		},
 		{
 			"name": "4XL",
-			"min": 144,
-			"max": 192
+			"min": 136,
+			"max": 158
+		},
+		{
+			"name": "5XL",
+			"min": 170,
+			"max": 198
+		},
+		{
+			"name": "5XS - 4XS",
+			"min": 1,
+			"max": 2
+		},
+		{
+			"name": "4XS - 3XS",
+			"min": 2,
+			"max": 5
 		},
 		{
 			"name": "3XS - 2XS",
-			"min": 5,
-			"max": 12
+			"min": 4,
+			"max": 10
 		},
 		{
 			"name": "2XS - XS",
 			"min": 9,
-			"max": 18
+			"max": 15
 		},
 		{
 			"name": "XS - S",
-			"min": 14,
-			"max": 24
+			"min": 13,
+			"max": 20
 		},
 		{
 			"name": "S - M",
-			"min": 18,
-			"max": 36
+			"min": 17,
+			"max": 30
 		},
 		{
 			"name": "M - L",
-			"min": 27,
-			"max": 48
+			"min": 26,
+			"max": 40
 		},
 		{
 			"name": "L - XL",
-			"min": 36,
-			"max": 72
+			"min": 34,
+			"max": 59
 		},
 		{
 			"name": "XL - 2XL",
-			"min": 54,
-			"max": 96
+			"min": 51,
+			"max": 79
 		},
 		{
 			"name": "2XL - 3XL",
-			"min": 72,
-			"max": 144
+			"min": 68,
+			"max": 119
 		},
 		{
 			"name": "3XL - 4XL",
-			"min": 108,
-			"max": 192
+			"min": 102,
+			"max": 158
+		},
+		{
+			"name": "4XL - 5XL",
+			"min": 136,
+			"max": 198
 		},
 		{
 			"name": "S - L",
-			"min": 18,
-			"max": 48
+			"min": 17,
+			"max": 40
 		},
 		{
 			"name": "S - XL",
-			"min": 18,
-			"max": 72
+			"min": 17,
+			"max": 59
+		},
+		{
+			"name": "M - S",
+			"min": 26,
+			"max": 20
 		}
 	]
 }
