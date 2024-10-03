@@ -13,16 +13,16 @@ const mediaSchema = z
 const answersCollection = defineCollection({
 	loader: file('src/data/answers.json'),
 	schema: z.object({
-		id: z.number(),
-		timestamp: z.number(),
+		id: z.coerce.string(),
+		timestamp: z.number().transform(val => new Date(val * 1000)),
 		comment: z.string(),
 		reply: z.string(),
 		media: mediaSchema,
 		in_response_to: z.lazy(() =>
 			z
 				.object({
-					id: z.number(),
-					timestamp: z.number(),
+					id: z.coerce.string(),
+					timestamp: z.number().transform(val => new Date(val * 1000)),
 					comment: z.string(),
 					reply: z.string(),
 					media: mediaSchema,
