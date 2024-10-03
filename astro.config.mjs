@@ -2,6 +2,8 @@ import {defineConfig} from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
+import icon from 'astro-icon';
+
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://example.com',
@@ -10,6 +12,7 @@ export default defineConfig({
 			applyBaseStyles: false,
 			nesting: true
 		}),
-		sitemap()
+		sitemap(),
+		icon()
 	]
 });
