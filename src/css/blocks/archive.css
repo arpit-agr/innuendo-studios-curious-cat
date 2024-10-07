@@ -1,0 +1,48 @@
+.archive {
+	> .sidebar {
+		--gutter: 0 var(--space-l);
+	}
+}
+
+.archive-header {
+	--gutter: var(--space-2xs) var(--space-s-l);
+
+	> h1 {
+		position: relative;
+
+		&:after {
+			order: 2;
+			content: '';
+			flex-grow: 999;
+			border-block-start: var(--space-5xs) solid var(--color-border);
+		}
+
+		> :first-child {
+			order: 1;
+		}
+
+		> :last-child {
+			order: 3;
+		}
+	}
+}
+
+.about-archive {
+	--measure: 40ch;
+	margin-block-start: var(--space-l);
+	padding-block-end: var(--space-l);
+	border-block-end: var(--space-5xs) solid var(--color-border);
+
+	@media (--lg-n-above) {
+		--measure: 30ch;
+		margin-block-start: 0.5lh;
+		padding-block-start: 0.5lh;
+		border-block-start: var(--space-5xs) solid var(--color-border);
+		border-block-end: none;
+
+		p {
+			text-wrap: balance;
+			text-align: end;
+		}
+	}
+}
