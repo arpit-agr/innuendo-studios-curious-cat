@@ -1,39 +1,33 @@
-@import 'tailwindcss/base';
+@layer composition, utils, blocks, exceptions;
 
-@import 'global/reset.css';
-@import 'global/fonts.css';
+@import 'tailwindcss/base' layer(composition);
+@import 'global/reset.css' layer(composition);
+@import 'tailwindcss/components' layer(composition);
+@import 'global/variables.css' layer(composition);
+@import 'global/global.css' layer(composition);
 
-@import 'tailwindcss/components';
+@import 'composition/box.css' layer(composition);
+@import 'composition/cluster.css' layer(composition);
+@import 'composition/flow.css' layer(composition);
+@import 'composition/grid.css' layer(composition);
+@import 'composition/icon.css' layer(composition);
+@import 'composition/repel.css' layer(composition);
+@import 'composition/sidebar.css' layer(composition);
+@import 'composition/stack.css' layer(composition);
+@import 'composition/switcher.css' layer(composition);
+@import 'composition/wrapper.css' layer(composition);
 
-@import 'global/variables.css';
-@import 'global/global.css';
+@import 'blocks/prose.css' layer(blocks);
+@import 'blocks/header.css' layer(blocks);
+@import 'blocks/search.css' layer(blocks);
+@import 'blocks/archive.css' layer(blocks);
+@import 'blocks/post.css' layer(blocks);
+@import 'blocks/pagination.css' layer(blocks);
+@import 'blocks/progressive-blur.css' layer(blocks);
+@import 'blocks/footer.css' layer(blocks);
+@import 'blocks/about-me.css' layer(blocks);
+@import 'blocks/social-links.css' layer(blocks);
 
-/* 
-See issue: https://github.com/frankstallone/astro-cube-boilerplate/issues/1
-Reference source: https://github.com/Set-Creative-Studio/cube-boilerplate/blob/main/src/css/global.css#L11
-
-@import-glob 'blocks/*.css' layer(components);
-@import-glob 'components/*.css' layer(components);
-@import-glob 'utilities/*.css' layer(components); 
-*/
-
-/*
-Removing unused custom CSS
-Any custom styles you add to the base, components, or utilities layers will only be included in your compiled CSS if those styles are actually used in your HTML.
-
-Source: https://tailwindcss.com/docs/adding-custom-styles#removing-unused-custom-css
-*/
-@import 'blocks/prose.css' layer(components);
-@import 'composition/box.css' layer(components);
-@import 'composition/cluster.css' layer(components);
-@import 'composition/flow.css' layer(components);
-@import 'composition/grid.css' layer(components);
-@import 'composition/icon.css' layer(components);
-@import 'composition/repel.css' layer(components);
-@import 'composition/sidebar.css' layer(components);
-@import 'composition/switcher.css' layer(components);
-@import 'composition/wrapper.css' layer(components);
-@import 'utilities/region.css' layer(components);
-@import 'utilities/visually-hidden.css' layer(components);
-
-@import 'tailwindcss/utilities';
+@import 'utilities/region.css' layer(utils);
+@import 'utilities/visually-hidden.css' layer(utils);
+@import 'tailwindcss/utilities' layer(utils);
