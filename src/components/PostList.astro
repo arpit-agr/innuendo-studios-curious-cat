@@ -69,7 +69,7 @@ const currentPagePostIds = posts.map(({data}) => data.id);
 			return (
 				<li id={postId} class="post">
 					<article>
-						<div class="repel">
+						<div class="post-header repel">
 							<a
 								class="jump-link text-step-000 tracking-wide leading-flat"
 								href={postAnchorLink}
@@ -83,7 +83,7 @@ const currentPagePostIds = posts.map(({data}) => data.id);
 							</p>
 						</div>
 						{/* main */}
-						<div class="post-inner" data-pagefind-body>
+						<div class="post-main" data-pagefind-body>
 							{/* comment */}
 							<div class="comment grid">
 								<span

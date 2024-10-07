@@ -12,12 +12,20 @@
 	}
 }
 
-.jump-link {
-	order: 2;
-	padding-block: var(--space-xs);
+.post-header {
+	--gutter: var(--space-s) 0;
 }
 
-.post-inner {
+.jump-link {
+	order: 2;
+	padding: var(--space-xs);
+
+	+ * {
+		margin-inline-start: var(--space-xs);
+	}
+}
+
+.post-main {
 	padding: var(--space-xs);
 	border-radius: var(--space-3xs);
 	outline: var(--space-5xs) solid var(--color-border);
