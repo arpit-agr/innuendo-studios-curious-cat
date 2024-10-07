@@ -1,21 +1,149 @@
+/* space variables */
 :root {
-	--measure: 60ch;
-	--gutter: var(--space-s-l);
+	--wrapper-max-width: 64rem;
+	--measure: 64ch;
+	--page-gutter: var(--space-s-l);
+	--dynamic-gutter: max(
+		var(--page-gutter),
+		calc(((100vw - min(var(--wrapper-max-width, 80rem), 100vw)) / 2))
+	);
+	--gutter: var(--space-s);
+	--sidebar-content-min-width: 62.5%;
+	--sidebar-target-width: 20rem;
+	--link-padding: var(--space-s-m);
+}
+
+/* color variables */
+:root {
+	--color-dark-muted: color-mix(
+		in srgb,
+		var(--color-dark) 75%,
+		var(--color-light)
+	);
+	--color-border: color-mix(in srgb, currentColor 30%, var(--color-light));
+	--color-primary-border: color-mix(
+		in srgb,
+		var(--color-primary) 30%,
+		var(--color-light)
+	);
+	--color-dialog-backdrop: color-mix(
+		in srgb,
+		var(--color-dark) 66%,
+		transparent
+	);
+	--color-mark: color-mix(
+		in srgb,
+		var(--color-primary) 30%,
+		var(--color-light)
+	);
+	--color-border-kbd: color-mix(
+		in srgb,
+		var(--color-dark) 45%,
+		var(--color-light)
+	);
+	--kbd-shadow-color: color-mix(
+		in srgb,
+		var(--color-dark) 75%,
+		var(--color-light)
+	);
+
+	@media (--HDcolor) {
+		--color-dark-muted: color-mix(
+			in oklch,
+			var(--color-dark) 75%,
+			var(--color-light)
+		);
+		--color-primary: oklch(54.58% 0.2029 37.58);
+		--color-border: color-mix(in oklch, currentColor 30%, var(--color-light));
+		--color-primary-border: color-mix(
+			in oklch,
+			var(--color-primary) 30%,
+			var(--color-light)
+		);
+		--color-dialog-backdrop: color-mix(
+			in oklch,
+			var(--color-dark) 66%,
+			transparent
+		);
+		--color-mark: color-mix(
+			in oklch,
+			var(--color-primary) 30%,
+			var(--color-light)
+		);
+		--color-border-kbd: color-mix(
+			in oklch,
+			var(--color-dark) 45%,
+			var(--color-light)
+		);
+		--kbd-shadow-color: color-mix(
+			in oklch,
+			var(--color-dark) 75%,
+			var(--color-light)
+		);
+	}
+}
+
+/* shadow variables */
+:root {
+	--shadow-color: 220 3% 15%;
+	--shadow-strength: 1%;
+	--inner-shadow-highlight: inset 0 -0.5px 0 0 #fff,
+		inset 0 0.5px 0 0 rgba(0, 0, 0, 0.06667);
+	--shadow-1: 0 1px 2px -1px hsl(var(--shadow-color) /
+				calc(var(--shadow-strength) + 9%));
+	--shadow-2: 0 3px 5px -2px hsl(var(--shadow-color) /
+					calc(var(--shadow-strength) + 3%)),
+		0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
+	--shadow-4: 0 -2px 5px 0 hsl(var(--shadow-color) /
+					calc(var(--shadow-strength) + 2%)),
+		0 1px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+		0 2px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+		0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+		0 9px 9px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+		0 16px 16px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+	--shadow-6: 0 -1px 2px 0 hsl(var(--shadow-color) /
+					calc(var(--shadow-strength) + 2%)),
+		0 3px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+		0 7px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+		0 12px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+		0 22px 18px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+		0 41px 33px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%)),
+		0 100px 80px -2px hsl(var(--shadow-color) /
+					calc(var(--shadow-strength) + 7%));
+	--inner-shadow-0: inset 0 0 0 1px hsl(220 3% 15% / calc(1% + 9%));
+	--inner-shadow-1: inset 0 1px 2px 0 hsl(220 3% 15% / calc(1% + 9%)),
+		var(--inner-shadow-highlight);
+}
+
+/* transition variables */
+:root {
 	--transition-base: 250ms ease;
 	--transition-movement: 200ms linear;
 	--transition-fade: 300ms ease;
 	--transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
 }
 
+/* other variables */
+:root {
+	--focus-ring-width: var(--space-5xs-4xs);
+	--focus-ring: var(--focus-ring-width) solid var(--color-primary);
+	--focus-ring-offset: calc(-1 * var(--focus-ring-width));
+
+	--blur-factor: 0.5px; /* Base blur factor */
+	--percentage-step: 12.5%; /* Base percentage step */
+}
+
 /* https://open-props.style/#media-queries */
 /* Viewport Vars */
 @custom-media --sm-n-above (min-width: 30em);
 @custom-media --md-n-above (min-width: 48em);
-@custom-media --lg-n-above (min-width: 80em);
+@custom-media --lg-n-above (min-width: 64em);
+@custom-media --xl-n-above (min-width: 80em);
 
 @custom-media --sm-n-below (max-width: 29.9375em);
 @custom-media --md-n-below (max-width: 47.9375em);
-@custom-media --lg-n-below (max-width: 79.9375em);
+@custom-media --lg-n-below (max-width: 63.9375em);
+@custom-media --xl-n-below (max-width: 79.9375em);
 
 /* Capability Vars */
 @custom-media --mouse (hover) and (pointer: fine);
