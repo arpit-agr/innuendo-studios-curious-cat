@@ -5,8 +5,8 @@ import {file} from 'astro/loaders';
 const mediaSchema = z
 	.object({
 		img: z.string().url(),
-		w: z.number().optional(),
-		h: z.number().optional()
+		w: z.number(),
+		h: z.number()
 	})
 	.nullable(); // Allow media to be null
 
