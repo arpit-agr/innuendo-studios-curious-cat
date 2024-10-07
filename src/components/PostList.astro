@@ -119,7 +119,13 @@ const currentPagePostIds = posts.map(({data}) => data.id);
 							{/* reply */}
 							<div class="reply grid">
 								<div class="avatar-wrapper" data-hover-popover="reply">
-									<Image class="avatar" src={avatar} alt="" quality="low" />
+									<Image
+										class="avatar"
+										src={avatar}
+										alt=""
+										quality="low"
+										loading={mediaLoadingStrategy}
+									/>
 								</div>
 								{!!replyContent && (
 									<div class="reply-text flow flow-space-xs">
