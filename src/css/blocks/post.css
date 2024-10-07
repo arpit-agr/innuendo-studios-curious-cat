@@ -1,0 +1,132 @@
+.post {
+	> article {
+		max-inline-size: var(--measure);
+	}
+
+	&:target {
+		scroll-margin-block: calc((0.5 * var(--space-m)) - var(--space-5xs));
+
+		.comment-text span {
+			box-shadow: inset 0 -1lh 0 0 var(--color-mark);
+		}
+	}
+}
+
+.jump-link {
+	order: 2;
+	padding-block: var(--space-xs);
+}
+
+.post-inner {
+	padding: var(--space-xs);
+	border-radius: var(--space-3xs);
+	outline: var(--space-5xs) solid var(--color-border);
+	background-color: var(--color-light);
+	box-shadow: var(--shadow-2);
+}
+
+.comment,
+.reply {
+	--gutter: var(--space-2xs);
+	align-items: flex-start;
+	grid-template-columns: auto 1fr;
+}
+
+:is(.comment-text, .reply-text) > :nth-child(2) {
+	--flow-space: 0;
+}
+
+.comment {
+	margin-block-end: var(--space-xs);
+	padding-block-end: var(--space-xs);
+	border-block-end: var(--space-5xs) dashed var(--color-border);
+}
+
+.anonymous {
+	display: grid;
+	place-content: center;
+	inline-size: var(--space-s);
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: var(--color-dark);
+	color: var(--color-light);
+	-webkit-font-smoothing: antialiased;
+	font-size: 0.5em;
+	line-height: var(--leading-flat);
+	translate: 0 20%;
+}
+
+.in-response-to {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 0.5ch;
+	max-inline-size: fit-content;
+
+	&:has(a:focus-visible) {
+		outline: var(--focus-ring);
+	}
+
+	[data-icon] {
+		flex-shrink: 0;
+		translate: 0 -20%;
+	}
+
+	a {
+		&:focus-visible {
+			outline: none;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			inset: 0;
+		}
+	}
+}
+
+.reply {
+	.avatar-wrapper {
+		grid-row: 1/-1;
+	}
+
+	.avatar {
+		inline-size: var(--space-s);
+		border-radius: 50%;
+		translate: 0 20%;
+	}
+
+	.media {
+		grid-column: 2/-1;
+		border-radius: var(--space-3xs);
+	}
+}
+
+#comment-popover,
+#reply-popover {
+	margin: 0;
+	border: none;
+
+	inset: auto;
+	position-area: block-start span-inline-start;
+	position-try-fallbacks: flip-inline;
+	position-try-order: most-inline-size;
+	margin-block: var(--space-3xs);
+	padding-inline: 0.75ch;
+	border-radius: var(--space-3xs);
+	background-color: var(--color-dark);
+	color: var(--color-light);
+	-webkit-font-smoothing: antialiased;
+
+	@supports not (position-area: block-start) {
+		display: none;
+	}
+}
+
+#comment-popover {
+	position-anchor: --comment-anchor;
+}
+
+#reply-popover {
+	position-anchor: --reply-anchor;
+}
