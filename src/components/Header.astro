@@ -1,0 +1,35 @@
+---
+import {Icon} from 'astro-icon/components';
+import Search from './Search.astro';
+
+const sitePages = [
+	{
+		label: 'Home',
+		href: '/',
+		icon: 'tabler:home'
+	},
+	{
+		label: 'CuriousCat Archive',
+		href: '/posts/',
+		icon: 'tabler:archive'
+	}
+];
+---
+
+<header class="site-header repel" data-nowrap>
+	<nav aria-label="Primary">
+		<ul class="cluster" role="list">
+			{
+				sitePages.map(page => (
+					<li>
+						<a class="cluster" href={page.href}>
+							<Icon name={page.icon} aria-hidden="true" />
+							{page.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+	<Search />
+</header>
