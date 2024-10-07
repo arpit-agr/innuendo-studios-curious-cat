@@ -1,9 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {SITE_TITLE} from '../data/constants';
+import Header from '../components/Header.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Footer from '../components/Footer.astro';
+
+const pageDescription = `This is the website of Ian Danskin a.k.a Innuendo Studios, a freelancer, writer, "media artist," and video essayist.`;
 ---
 
-<Layout title="🚨🚨🚨">
-	<article>
-		<h1>Hello world</h1>
-	</article>
+<Layout title={SITE_TITLE} description={pageDescription}>
+	<Header />
+	<main class="region region-space-m-l">
+		<AboutMe />
+	</main>
+	<Footer />
 </Layout>
