@@ -8,7 +8,7 @@ import {dirname, relative} from 'node:path';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://innuendo-studios.netlify.app/',
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
