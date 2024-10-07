@@ -1,21 +1,49 @@
 ---
 import '../css/style.css';
+import {join} from 'node:path';
+import {AstroFont} from 'astro-font';
 
 interface Props {
+	class?: string;
 	title: string;
 	description?: string;
 }
 
-const {title, description} = Astro.props;
+const {class: className, title, description} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class={className}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
 		{!!description && <meta name="description" content={description} />}
+		<AstroFont
+			config={[
+				{
+					name: 'Inter',
+					src: [
+						{
+							style: '',
+							weight: '100 900',
+							path: join(
+								process.cwd(),
+								'public',
+								'fonts',
+								'InterVariable-subset-new.woff2'
+							)
+						}
+					],
+					preload: true,
+					display: 'swap',
+					selector: 'body',
+					cssVariable: 'font-base',
+					fallback: 'sans-serif',
+					fallbackName: 'Inter Fallback'
+				}
+			]}
+		/>
 		<!-- favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
