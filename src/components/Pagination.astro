@@ -1,0 +1,63 @@
+---
+import {Icon} from 'astro-icon/components';
+import ProgressiveBlur from './ProgressiveBlur.astro';
+
+interface Props {
+	prevPageUrl?: string;
+	nextPageUrl?: string;
+}
+
+const {prevPageUrl, nextPageUrl} = Astro.props;
+---
+
+{
+	(prevPageUrl || nextPageUrl) && (
+		<nav aria-label="Pagination">
+			<div class="pagination text-step-00 leading-flat font-medium wrapper">
+				{prevPageUrl && (
+					<a
+						class="cluster"
+						href={prevPageUrl}
+						data-direction="backwards"
+						aria-keyshortcuts="Shift+P"
+					>
+						<Icon name="tabler:chevron-left" aria-hidden="true" /> Previous
+					</a>
+				)}
+				{nextPageUrl && (
+					<a
+						class="cluster"
+						href={nextPageUrl}
+						data-direction="forwards"
+						aria-keyshortcuts="Shift+N"
+					>
+						Next <Icon name="tabler:chevron-right" aria-hidden="true" />
+					</a>
+				)}
+			</div>
+			<ProgressiveBlur />
+		</nav>
+	)
+}
+
+<script>
+	document.addEventListener('keydown', function (event) {
+		if (event.shiftKey && event.key.toLowerCase() === 'n') {
+			const forwardsLink = document.querySelector(
+				'a[data-direction="forwards"]'
+			) as HTMLAnchorElement | null;
+			if (forwardsLink) {
+				forwardsLink.click();
+			}
+		}
+
+		if (event.shiftKey && event.key.toLowerCase() === 'p') {
+			const backwardsLink = document.querySelector(
+				'a[data-direction="backwards"]'
+			) as HTMLAnchorElement | null;
+			if (backwardsLink) {
+				backwardsLink.click();
+			}
+		}
+	});
+</script>
