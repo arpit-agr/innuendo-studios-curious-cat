@@ -5,9 +5,9 @@
   project: https://cube.fyi/css.html
 */
 
-/* @view-transition {
+@view-transition {
 	navigation: auto;
-} */
+}
 
 body {
 	display: flex;
