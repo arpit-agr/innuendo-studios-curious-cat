@@ -1,0 +1,4 @@
+.site-credit a {
+	display: inline-block;
+	padding-block: var(--link-padding);
+}
