@@ -1,0 +1,24 @@
+---
+interface Props {
+	currentPageNumber: number;
+}
+
+const {currentPageNumber} = Astro.props;
+---
+
+{
+	currentPageNumber === 1 && (
+		<div class="pagination-shortcut" popover data-shortcut="next">
+			<kbd>shift</kbd>
+			<kbd>n</kbd>
+		</div>
+	)
+}
+{
+	currentPageNumber === 2 && (
+		<div class="pagination-shortcut" popover data-shortcut="previous">
+			<kbd>shift</kbd>
+			<kbd>p</kbd>
+		</div>
+	)
+}
