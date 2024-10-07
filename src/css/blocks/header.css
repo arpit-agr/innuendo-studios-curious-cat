@@ -1,0 +1,17 @@
+.site-header {
+	padding-inline: var(--dynamic-gutter);
+	overflow: scroll;
+
+	> * {
+		flex-shrink: 0;
+	}
+
+	ul {
+		--gutter: var(--space-s);
+
+		a {
+			--gutter: 0.5ch;
+			padding-block: var(--link-padding);
+		}
+	}
+}
