@@ -1,0 +1,9 @@
+.about-me {
+	--gutter: var(--space-2xs) var(--space-xs);
+
+	img {
+		inline-size: auto;
+		block-size: var(--space-xl-2xl);
+		border-radius: 50%;
+	}
+}
