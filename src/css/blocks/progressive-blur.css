@@ -1,0 +1,98 @@
+.progressive-blur,
+.progressive-blur > * {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.progressive-blur > * {
+	backdrop-filter: blur(var(--blur-value));
+	-webkit-backdrop-filter: blur(var(--blur-value));
+	mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0) var(--start),
+		rgba(0, 0, 0, 1) var(--mid-start),
+		rgba(0, 0, 0, 1) var(--mid-end),
+		rgba(0, 0, 0, 0) var(--end)
+	);
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0) var(--start),
+		rgba(0, 0, 0, 1) var(--mid-start),
+		rgba(0, 0, 0, 1) var(--mid-end),
+		rgba(0, 0, 0, 0) var(--end)
+	);
+}
+
+/* Individual settings for each blur element */
+.progressive-blur-1 {
+	z-index: 1;
+	--blur-value: calc(var(--blur-factor) * 1); /* 0.125px */
+	--start: calc(var(--percentage-step) * 0); /* 0% */
+	--mid-start: calc(var(--percentage-step) * 1); /* 12.5% */
+	--mid-end: calc(var(--percentage-step) * 2); /* 25% */
+	--end: calc(var(--percentage-step) * 3); /* 37.5% */
+}
+
+.progressive-blur-2 {
+	z-index: 2;
+	--blur-value: calc(var(--blur-factor) * 2); /* 0.25px */
+	--start: calc(var(--percentage-step) * 1); /* 12.5% */
+	--mid-start: calc(var(--percentage-step) * 2); /* 25% */
+	--mid-end: calc(var(--percentage-step) * 3); /* 37.5% */
+	--end: calc(var(--percentage-step) * 4); /* 50% */
+}
+
+.progressive-blur-3 {
+	z-index: 3;
+	--blur-value: calc(var(--blur-factor) * 4); /* 0.5px */
+	--start: calc(var(--percentage-step) * 2); /* 25% */
+	--mid-start: calc(var(--percentage-step) * 3); /* 37.5% */
+	--mid-end: calc(var(--percentage-step) * 4); /* 50% */
+	--end: calc(var(--percentage-step) * 5); /* 62.5% */
+}
+
+.progressive-blur-4 {
+	z-index: 4;
+	--blur-value: calc(var(--blur-factor) * 8); /* 1px */
+	--start: calc(var(--percentage-step) * 3); /* 37.5% */
+	--mid-start: calc(var(--percentage-step) * 4); /* 50% */
+	--mid-end: calc(var(--percentage-step) * 5); /* 62.5% */
+	--end: calc(var(--percentage-step) * 6); /* 75% */
+}
+
+.progressive-blur-5 {
+	z-index: 5;
+	--blur-value: calc(var(--blur-factor) * 16); /* 2px */
+	--start: calc(var(--percentage-step) * 4); /* 50% */
+	--mid-start: calc(var(--percentage-step) * 5); /* 62.5% */
+	--mid-end: calc(var(--percentage-step) * 6); /* 75% */
+	--end: calc(var(--percentage-step) * 7); /* 87.5% */
+}
+
+.progressive-blur-6 {
+	z-index: 6;
+	--blur-value: calc(var(--blur-factor) * 32); /* 4px */
+	--start: calc(var(--percentage-step) * 5); /* 62.5% */
+	--mid-start: calc(var(--percentage-step) * 6); /* 75% */
+	--mid-end: calc(var(--percentage-step) * 7); /* 87.5% */
+	--end: calc(var(--percentage-step) * 8); /* 100% */
+}
+
+.progressive-blur-7 {
+	z-index: 7;
+	--blur-value: calc(var(--blur-factor) * 64); /* 8px */
+	--start: calc(var(--percentage-step) * 6); /* 75% */
+	--mid-start: calc(var(--percentage-step) * 7); /* 87.5% */
+	--mid-end: calc(var(--percentage-step) * 8); /* 100% */
+	--end: 100%;
+}
+
+.progressive-blur-8 {
+	z-index: 8;
+	--blur-value: calc(var(--blur-factor) * 128); /* 16px */
+	--start: calc(var(--percentage-step) * 7); /* 87.5% */
+	--mid-start: 100%;
+	--mid-end: 100%;
+	--end: 100%;
+}
