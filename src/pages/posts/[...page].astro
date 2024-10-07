@@ -13,7 +13,7 @@ import Footer from '../../components/Footer.astro';
 
 export const getStaticPaths = (async ({paginate}) => {
 	const answers = await getCollection('answers');
-	return paginate(answers, {pageSize: 150});
+	return paginate(answers, {pageSize: 75});
 }) satisfies GetStaticPaths;
 
 const {page} = Astro.props;
