@@ -1,3 +1,9 @@
+@media (--lg-n-above) {
+	.progressive-blur {
+		display: none;
+	}
+}
+
 .progressive-blur,
 .progressive-blur > * {
 	position: absolute;

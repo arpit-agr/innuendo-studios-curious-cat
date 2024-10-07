@@ -1,0 +1,72 @@
+.pagination-shortcut {
+	margin: 0;
+	border: none;
+	background: transparent;
+
+	opacity: 0;
+	position-area: block-start span-inline-start;
+	inset: auto;
+	margin-block: calc(-1 / 2 * var(--link-padding));
+	overflow: visible;
+	pointer-events: none;
+
+	@media (--mouse) {
+		opacity: 1;
+	}
+
+	@supports not (position-area: block-start) {
+		display: none;
+	}
+
+	> kbd + kbd {
+		margin-inline-start: 1ch;
+	}
+}
+
+[data-shortcut='next'] {
+	position-anchor: --next-page-anchor;
+}
+
+[data-shortcut='previous'] {
+	position-anchor: --previous-page-anchor;
+}
+
+[aria-label='Pagination'] {
+	padding-block-start: var(--space-l);
+	position: sticky;
+	inset-block-end: 0;
+	background-image: linear-gradient(to bottom, transparent, var(--color-light));
+
+	@media (--lg-n-above) {
+		position: fixed;
+		inset-inline-end: var(--dynamic-gutter);
+		inset-block-end: 0;
+		padding-block-start: unset;
+		background-image: none;
+	}
+}
+
+.pagination {
+	--gutter: var(--space-s);
+	position: relative;
+	z-index: 999;
+
+	a {
+		--gutter: 0.25ch;
+		padding-block: var(--link-padding);
+
+		/* [data-icon] {
+			translate: 0 5%;
+		} */
+	}
+
+	[data-direction='forwards'] {
+		anchor-name: --next-page-anchor;
+		margin-inline-start: auto;
+		/* translate: 0.5ch 0; */
+	}
+
+	[data-direction='backwards'] {
+		anchor-name: --previous-page-anchor;
+	}
+}
