@@ -1,0 +1,32 @@
+---
+import {Image} from 'astro:assets';
+import avatar from '../images/avatar.jpg';
+import SocialLinks from './SocialLinks.astro';
+
+const philFishUrl = 'https://www.youtube.com/watch?v=PmTUW-owa2w';
+const whyAngryUrl =
+	'https://www.youtube.com/watch?v=6y8XgGhXkTQ&list=PLJA_jUddXvY62dhVThbeegLPpvQlR4CjF';
+---
+
+<div class="about-me flow wrapper">
+	<div class="cluster">
+		<Image src={avatar} alt="" />
+		<h1 class="stack">
+			<span>It's me, Ian Danskin!</span>
+			<span class="text-step-00 font-regular">a.k.a Innuendo Studios</span>
+		</h1>
+	</div>
+	<p class="text-balance">
+		I'm a freelancer, writer, "media artist," and video essayist.
+	</p>
+	<p class="text-balance">
+		You might know me best from YouTube videos such as
+		<a href={philFishUrl}>
+			This Is Phil Fish: A Case Study in Internet Fame, Things of Beauty: Super
+			Smash Bros. as Spectator Sport
+		</a>, and
+		<a href={whyAngryUrl}>Why Are You So Angry?</a>, a six part series about
+		angry gamers and harassment.
+	</p>
+	<SocialLinks />
+</div>
