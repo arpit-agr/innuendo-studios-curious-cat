@@ -4,37 +4,154 @@
   Low-specificity, global styles that apply to the whole 
   project: https://cube.fyi/css.html
 */
+
+/* @view-transition {
+	navigation: auto;
+} */
+
 body {
-	padding: var(--gutter);
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0;
 	background: var(--color-light);
-	color: var(--color-dark);
+	color: var(--color-dark-muted);
 	font-size: var(--size-step-0);
 	font-family: var(--font-base);
 	line-height: var(--leading-standard);
+	overflow-wrap: anywhere;
+
+	> main {
+		flex-grow: 999;
+	}
 }
 
 h1,
-h2 {
-	font-weight: var(--font-bold);
-	line-height: var(--leading-flat);
+.heading-1,
+h2,
+.heading-2,
+h3,
+.heading-3,
+h4,
+.heading-4,
+strong,
+mark {
+	color: var(--color-dark);
+}
+
+h1,
+.heading-1,
+h2,
+.heading-2 {
+	font-weight: var(--font-semi-bold);
 }
 
 h3,
-h4 {
+.heading-3,
+h4,
+.heading-4 {
 	font-weight: var(--font-medium);
+}
+
+h1,
+.heading-1 {
+	font-size: var(--size-step-4);
+	line-height: var(--leading-flat);
+}
+
+h2,
+.heading-2 {
+	font-size: var(--size-step-2);
 	line-height: var(--leading-fine);
+}
+
+h3,
+.heading-3 {
+	font-size: var(--size-step-1);
+	line-height: var(--leading-fine);
+}
+
+h4,
+.heading-4 {
+	font-size: var(--size-step-0);
+	line-height: var(--leading-standard);
 }
 
 p {
 	max-inline-size: var(--measure);
 }
 
+:where(a, u, ins, abbr) {
+	text-underline-offset: var(--space-4xs);
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration-color: var(--color-border);
+	text-decoration-thickness: from-font;
+	transition:
+		color var(--transition-base),
+		text-decoration-color var(--transition-base);
+
+	&:hover {
+		color: var(--color-dark);
+		text-decoration-color: currentColor;
+	}
+}
 :where(ol, ul):not([role='list']) {
 	padding-inline-start: var(--space-m);
 
 	:where(li) {
 		padding-inline-start: var(--space-3xs);
 	}
+}
+
+hr {
+	block-size: 0;
+	background-color: unset;
+	border-block-start: var(--space-5xs) solid var(--color-border);
+}
+
+kbd {
+	padding: var(--space-3xs) var(--space-2xs);
+	border: var(--space-5xs) solid var(--color-border-kbd);
+	border-radius: var(--space-3xs);
+	box-shadow: 0 var(--space-4xs) 0 var(--space-5xs) var(--kbd-shadow-color);
+	scale: 0.9;
+	transform-origin: right;
+
+	background-color: var(--color-dark-muted);
+	color: var(--color-light);
+	-webkit-font-smoothing: antialiased;
+
+	transition:
+		background-color var(--transition-base),
+		color var(--transition-base),
+		box-shadow var(--transition-base);
+
+	font-family: var(--font-base);
+	font-weight: var(--font-medium);
+	font-size: var(--size-step-0000);
+	line-height: var(--leading-flat);
+	text-align: center;
+	@apply tracking-wider;
+}
+
+:disabled {
+	filter: grayscale(1);
+	opacity: 0.42;
+	cursor: not-allowed;
+}
+
+::selection {
+	background-color: var(--color-mark);
+	color: var(--color-dark);
+}
+
+*:focus-visible {
+	outline-offset: var(--focus-ring-offset);
+	outline: var(--focus-ring);
+	text-decoration-line: none;
 }
 
 /* Set foucs visible style */
@@ -45,8 +162,4 @@ p {
 	:where(:not(:active):focus-visible) {
 		transition-duration: 0.25s;
 	}
-}
-
-:where(:not(:active):focus-visible) {
-	outline-offset: 2px;
 }
