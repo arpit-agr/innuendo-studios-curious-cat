@@ -1,0 +1,66 @@
+---
+import type {GetStaticPaths} from 'astro';
+
+import {getCollection} from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import {ANSWER_COUNT, SITE_TITLE} from '../../data/constants';
+import Header from '../../components/Header.astro';
+import PostList from '../../components/PostList.astro';
+import AboutArchive from '../../components/AboutArchive.astro';
+import PaginationShortcut from '../../components/PaginationShortcut.astro';
+import Pagination from '../../components/Pagination.astro';
+import Footer from '../../components/Footer.astro';
+
+export const getStaticPaths = (async ({paginate}) => {
+	const answers = await getCollection('answers');
+	return paginate(answers, {pageSize: 150});
+}) satisfies GetStaticPaths;
+
+const {page} = Astro.props;
+const pageTitle = `${SITE_TITLE}' CuriousCat Archive - Page ${page.currentPage}`;
+const pageDescription = `This is an archive of all the ${ANSWER_COUNT} questions and answers from Innuendo Studios' CuriousCat page, which is set to be discontinued on Oct 7, 2024.`;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+	<Header />
+	<div class="archive region region-space-m-l">
+		<div class="sidebar wrapper">
+			<main class="flow">
+				<header class="archive-header">
+					<h1 class="heading-3 cluster">
+						<span>CuriousCat Archive</span>
+						<span
+							class="text-step-000 tracking-wide font-regular"
+							data-pagefind-meta="title"
+						>
+							Page {page.currentPage} of {page.lastPage}
+						</span>
+					</h1>
+				</header>
+				<PostList page={page} posts={page.data} />
+			</main>
+			<AboutArchive />
+		</div>
+		<PaginationShortcut currentPageNumber={page.currentPage} />
+		<Pagination prevPageUrl={page.url.prev} nextPageUrl={page.url.next} />
+	</div>
+	<Footer />
+</Layout>
+
+<script>
+	let anchor = document.querySelector(
+		'a[data-direction]'
+	) as HTMLAnchorElement | null;
+	let paginationPopover = document.querySelector(
+		'.pagination-shortcut'
+	) as HTMLDivElement | null;
+
+	if (anchor && paginationPopover) {
+		anchor.onmouseenter = () => {
+			paginationPopover.showPopover();
+		};
+		anchor.onmouseleave = () => {
+			paginationPopover.hidePopover();
+		};
+	}
+</script>
