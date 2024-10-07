@@ -1,0 +1,195 @@
+---
+import type {Page} from 'astro';
+import type {CollectionEntry} from 'astro:content';
+import {transformLineBreaks, transformLinks} from '../utils';
+import path from 'path';
+import FormattedDate from './FormattedDate.astro';
+import {Icon} from 'astro-icon/components';
+import {Image} from 'astro:assets';
+import avatar from '../images/avatar.jpg';
+import ReplyMedia from './ReplyMedia.astro';
+
+interface Props {
+	page: Page<{}>;
+	posts: CollectionEntry<'answers'>[];
+}
+
+const {page, posts} = Astro.props;
+
+// Collect all IDs from the current page's posts
+const postIds = posts.map(({data}) => data.id);
+---
+
+<h2 id="questions-and-answers" class="visually-hidden">
+	Questions and Answers
+</h2>
+<ol
+	class="flow flow-space-m"
+	role="list"
+	aria-labelledby="questions-and-answers"
+>
+	{
+		posts.map(({data}, index) => {
+			const postId = data.id;
+			const postJumpLink = `#${data.id}`;
+			const postJumpLinkLabel = `Jump link to question ${index + 1}`;
+			const postComment = data.comment;
+			const postReply = data.reply;
+
+			// Transform line breaks and links
+			const transformedComment = transformLineBreaks(postComment);
+			const transformedReply = transformLineBreaks(transformLinks(postReply));
+
+			const postMediaUrl = data.media?.img;
+			const postMediaExtension = postMediaUrl
+				? path.extname(postMediaUrl)
+				: null;
+
+			/* The media for postId 1314471210 has been deleted from Tenor so specifically for that post a replacement image is provided */
+			const postMediaPath =
+				postId !== '1314471210'
+					? `/src/images/posts/${postId}${postMediaExtension}`
+					: '/src/images/deleted.png';
+
+			const postMediaLoading = index + 1 < 7 ? 'eager' : 'lazy';
+			const postReplyDate = data.timestamp;
+			const isResponseTo = !!data.in_response_to;
+			const responseToId = data.in_response_to?.id;
+			const responseToComment = data.in_response_to?.comment;
+
+			// Check if the responseToId is present on the current page
+			const isResponseOnCurrentPage =
+				responseToId && postIds.includes(responseToId);
+
+			// Generate the href for the response
+			const responseToHref = isResponseOnCurrentPage
+				? `#${responseToId}`
+				: `${page.url.next ?? ''}#${responseToId}`; // Link to next page if not found
+
+			return (
+				<li id={postId} class="post">
+					<article>
+						<div class="repel">
+							<a
+								class="jump-link text-step-000 tracking-wide leading-flat"
+								href={postJumpLink}
+								aria-label={postJumpLinkLabel}
+							>
+								<Icon name="tabler:link" aria-hidden="true" />
+							</a>
+							<p class="text-step-000 tracking-wide leading-flat">
+								<span class="visually-hidden">Published on </span>
+								<FormattedDate pubDate={postReplyDate} />
+							</p>
+						</div>
+						{/* main */}
+						<div class="post-inner" data-pagefind-body>
+							{/* comment */}
+							<div class="comment grid">
+								<span
+									class="anonymous"
+									aria-hidden="true"
+									data-hover-popover="comment"
+									data-pagefind-ignore="all"
+								>
+									A
+								</span>
+								<div class="flow flow-space-3xs">
+									<div class="comment-text heading-4 flow">
+										<p class="visually-hidden">Anonymous commented:</p>
+										<Fragment set:html={transformedComment} />
+									</div>
+									{isResponseTo && (
+										<div
+											class="in-response-to text-step-00"
+											data-pagefind-ignore="all"
+										>
+											<Icon
+												name="tabler:corner-down-right"
+												aria-hidden="true"
+											/>
+											<p class="line-clamp-1">
+												in response to
+												<a href={responseToHref}>{responseToComment}</a>
+											</p>
+										</div>
+									)}
+								</div>
+							</div>
+							{/* reply */}
+							<div class="reply grid">
+								<div data-hover-popover="reply">
+									<Image class="avatar" src={avatar} alt="" quality="low" />
+								</div>
+								{!!postReply && (
+									<div class="reply-text flow flow-space-xs">
+										<p class="visually-hidden">Ian replied:</p>
+										<Fragment set:html={transformedReply} />
+									</div>
+								)}
+								{!!postMediaUrl && (
+									<ReplyMedia
+										imagePath={postMediaPath}
+										loading={postMediaLoading}
+									/>
+								)}
+							</div>
+						</div>
+					</article>
+				</li>
+			);
+		})
+	}
+</ol>
+
+<div
+	id="comment-popover"
+	class="text-step-0000 tracking-wider leading-flat"
+	popover
+>
+	Anon commented:
+</div>
+<div
+	id="reply-popover"
+	class="text-step-0000 tracking-wider leading-flat"
+	popover
+>
+	Ian replied:
+</div>
+
+<script>
+	let commentPopover = document.querySelector(
+		'#comment-popover'
+	) as HTMLElement | null;
+	let replyPopover = document.querySelector(
+		'#reply-popover'
+	) as HTMLElement | null;
+
+	document
+		.querySelectorAll('[data-hover-popover="comment"]')
+		.forEach(anchor => {
+			const anchorElement = anchor as HTMLElement;
+
+			anchorElement.onmouseenter = () => {
+				anchorElement.style.setProperty('anchor-name', '--comment-anchor');
+				if (commentPopover) {
+					commentPopover.showPopover();
+				}
+			};
+			anchorElement.onmouseleave = () => {
+				anchorElement.style.removeProperty('anchor-name');
+			};
+		});
+	document.querySelectorAll('[data-hover-popover="reply"]').forEach(anchor => {
+		const anchorElement = anchor as HTMLElement;
+		anchorElement.onmouseenter = () => {
+			anchorElement.style.setProperty('anchor-name', '--reply-anchor');
+			if (replyPopover) {
+				replyPopover.showPopover();
+			}
+		};
+		anchorElement.onmouseleave = () => {
+			anchorElement.style.removeProperty('anchor-name');
+		};
+	});
+</script>
