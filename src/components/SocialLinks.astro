@@ -1,0 +1,32 @@
+---
+import {Icon} from 'astro-icon/components';
+import {patreonUrl, tumblrUrl, twitterUrl, youtubeUrl} from '../data/constants';
+---
+
+<h2 id="social-links" class="visually-hidden">Social Links</h2>
+<ul class="flow-space-m cluster" role="list" aria-labelledby="social-links">
+	<li>
+		<a href={youtubeUrl} class="cluster">
+			<Icon name="simple-icons:youtube" aria-hidden="true" />
+			<span>YouTube</span>
+		</a>
+	</li>
+	<li>
+		<a href={twitterUrl} class="cluster">
+			<Icon name="simple-icons:x" aria-hidden="true" />
+			<span>Twitter</span>
+		</a>
+	</li>
+	<li>
+		<a href={tumblrUrl} class="cluster">
+			<Icon name="simple-icons:tumblr" aria-hidden="true" />
+			<span>Tumblr</span>
+		</a>
+	</li>
+	<li>
+		<a href={patreonUrl} class="cluster">
+			<Icon name="simple-icons:patreon" aria-hidden="true" />
+			<span>Patreon</span>
+		</a>
+	</li>
+</ul>

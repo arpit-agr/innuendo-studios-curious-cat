@@ -1,0 +1,7 @@
+[aria-labelledby='social-links'] {
+	--gutter: var(--space-s);
+
+	a {
+		--gutter: 0.5ch;
+	}
+}
