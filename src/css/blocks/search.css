@@ -95,16 +95,79 @@ dialog {
 		max-block-size: calc(100% - calc(4 * var(--space-s-m)));
 		border-radius: var(--space-3xs);
 	}
+
+	&[open] {
+		display: flex;
+	}
+
+	&::backdrop {
+		background-color: var(--color-dialog-backdrop);
+		-webkit-backdrop-filter: blur(calc(var(--blur-factor) * 8));
+		backdrop-filter: blur(calc(var(--blur-factor) * 8));
+	}
 }
 
-dialog[open] {
-	display: flex;
+dialog {
+	/* off stage opacity and default transition styles */
+	/* allow-discrete is a `transition-behavior` */
+	&,
+	&::backdrop {
+		transition: 
+      /* time display none/block with the transitions */
+			display 250ms allow-discrete,
+			/* time top-layer project with the transitions */ overlay 250ms
+				allow-discrete,
+			/* transition opacity */ opacity 250ms,
+			/* transition transforms */ transform 250ms;
+
+		/* both dialog and it's backdrop are opacity 0 */
+		/* when not showing */
+		opacity: 0;
+	}
+
+	/* on stage styles */
+	/* apply when dialog is shown */
+	&[open] {
+		opacity: 1;
+
+		&::backdrop {
+			opacity: 1;
+		}
+	}
+
+	/* entering stage styles */
+	/* used on first render when dialog has been */
+	/* cloned and projected into the top-layer */
+	@starting-style {
+		&[open],
+		&[open]::backdrop {
+			opacity: 0;
+		}
+	}
 }
 
-dialog::backdrop {
-	background-color: var(--color-dialog-backdrop);
-	-webkit-backdrop-filter: blur(calc(var(--blur-factor) * 8));
-	backdrop-filter: blur(calc(var(--blur-factor) * 8));
+@media (--md-n-above) {
+	dialog {
+		/* exit stage position of the dialog */
+		transform: translateY(calc(0.5 * var(--space-s-m)));
+
+		/* on stage styles */
+		/* apply when dialog is shown */
+		&[open] {
+			transform: translateY(0px);
+		}
+
+		/* entering stage styles */
+		/* used on first render when dialog has been */
+		/* cloned and projected into the top-layer */
+		@starting-style {
+			/* specific transform for dialog and not the backdrop */
+			/* enter stage from calc(0.5 * var(--space-s-m)) below the on stage resting style */
+			&[open] {
+				transform: translateY(calc(0.5 * var(--space-s-m)));
+			}
+		}
+	}
 }
 
 .dialog-frame {

@@ -1,7 +1,7 @@
 module.exports = {
-	plugins: [
-		require('tailwindcss/nesting'),
-		require('tailwindcss'),
-		require('postcss-custom-media')
-	]
+	plugins: {
+		'tailwindcss/nesting': 'postcss-nesting',
+		'tailwindcss': {},
+		'postcss-custom-media': {}
+	}
 };

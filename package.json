@@ -27,6 +27,7 @@
 		"@iconify-json/tabler": "^1.2.4",
 		"pagefind": "^1.1.1",
 		"postcss-custom-media": "^10.0.4",
+		"postcss-nesting": "^13.0.0",
 		"prettier": "^3.2.5",
 		"prettier-plugin-astro": "^0.13.0",
 		"typescript": "^5.3.3"
