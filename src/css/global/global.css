@@ -98,6 +98,11 @@ a {
 		text-decoration-color: currentColor;
 	}
 }
+
+input {
+	caret-color: var(--color-primary);
+}
+
 :where(ol, ul):not([role='list']) {
 	padding-inline-start: var(--space-m);
 
