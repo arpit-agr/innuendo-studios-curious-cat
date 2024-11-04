@@ -184,6 +184,7 @@ const currentPagePostIds = posts.map(({data}) => data.id);
 			};
 			anchorElement.onmouseleave = () => {
 				anchorElement.style.removeProperty('anchor-name');
+				popover?.hidePopover();
 			};
 		});
 	}
