@@ -10,10 +10,9 @@ button[data-open-modal] {
 
 	border: none;
 	border-radius: var(--space-3xs);
-	outline: var(--space-5xs) solid var(--color-border);
-
-	background-color: var(--color-light);
+	background-color: #eee;
 	color: var(--color-primary);
+
 	transition:
 		color var(--transition-base),
 		outline-color var(--transition-base);
@@ -89,10 +88,10 @@ dialog {
 	box-shadow: var(--shadow-6);
 
 	@media (--md-n-above) {
-		margin: calc(2 * var(--page-gutter)) auto;
-		max-inline-size: calc(var(--measure) - calc(2 * var(--page-gutter)));
+		margin: calc(2 * var(--space-s-m)) auto;
+		max-inline-size: calc(var(--measure) - calc(2 * var(--space-s-m)));
 		block-size: max-content;
-		max-block-size: calc(100% - calc(4 * var(--page-gutter)));
+		max-block-size: calc(100% - calc(4 * var(--space-s-m)));
 		border-radius: var(--space-3xs);
 	}
 
@@ -149,7 +148,7 @@ dialog {
 @media (--md-n-above) {
 	dialog {
 		/* exit stage position of the dialog */
-		transform: translateY(calc(0.5 * var(--page-gutter)));
+		transform: translateY(calc(0.5 * var(--space-s-m)));
 
 		/* on stage styles */
 		/* apply when dialog is shown */
@@ -162,9 +161,9 @@ dialog {
 		/* cloned and projected into the top-layer */
 		@starting-style {
 			/* specific transform for dialog and not the backdrop */
-			/* enter stage from calc(0.5 * var(--page-gutter)) below the on stage resting style */
+			/* enter stage from calc(0.5 * var(--space-s-m)) below the on stage resting style */
 			&[open] {
-				transform: translateY(calc(0.5 * var(--page-gutter)));
+				transform: translateY(calc(0.5 * var(--space-s-m)));
 			}
 		}
 	}
@@ -173,7 +172,7 @@ dialog {
 .dialog-frame {
 	position: relative;
 	flex-grow: 1;
-	padding: var(--page-gutter);
+	padding: var(--space-s-m);
 
 	@media (--md-n-above) {
 		padding: 0;
@@ -209,7 +208,7 @@ dialog {
 
 	inline-size: calc(100% - var(--search-cancel-space));
 	padding-block: 0.5lh;
-	padding-inline: var(--page-gutter);
+	padding-inline: var(--space-s-m);
 	border-radius: var(--space-3xs);
 	outline: var(--space-5xs) solid var(--color-border);
 	box-shadow: var(--shadow-2);
@@ -238,8 +237,8 @@ dialog {
 	position: absolute;
 	block-size: 1lh;
 	inline-size: 1lh;
-	padding: 0.5lh var(--page-gutter);
-	inset-inline-end: calc(var(--page-gutter) + var(--search-cancel-space));
+	padding: 0.5lh var(--space-s-m);
+	inset-inline-end: calc(var(--space-s-m) + var(--search-cancel-space));
 	outline: var(--focus-ring);
 	outline-color: transparent;
 	border-radius: var(--space-3xs);
@@ -278,10 +277,10 @@ dialog {
 }
 
 .pagefind-ui__results-area {
-	padding-block: var(--page-gutter);
+	padding-block: var(--space-s-m);
 
 	@media (--md-n-above) {
-		padding-inline: var(--page-gutter);
+		padding-inline: var(--space-s-m);
 	}
 }
 
@@ -298,7 +297,8 @@ dialog {
 
 .pagefind-ui__result {
 	position: relative;
-	padding-block: 0.5lh;
+	/* padding-block: 0.5lh; */
+	padding-block: max(0.75lh, 1/2 * var(--space-s-m));
 	list-style-type: none;
 	border-block-start: var(--space-5xs) solid var(--color-border);
 }
@@ -315,6 +315,10 @@ dialog {
 	background-color: color-mix(in srgb, var(--color-dark) 5%, transparent);
 	opacity: 0;
 	transition: opacity var(--transition-base);
+
+	box-shadow: 0 0 0 100vmax
+		color-mix(in srgb, var(--color-dark) 5%, transparent);
+	clip-path: inset(0 -100vmax);
 }
 
 .pagefind-ui__result-link:hover::after {
@@ -344,7 +348,7 @@ dialog {
 	background-color: var(--color-light);
 	font-size: var(--size-step-00);
 	font-weight: var(--font-medium);
-	box-shadow: var(--shadow-2);
+	/* box-shadow: var(--shadow-2); */
 
 	&:focus-visible {
 		outline: var(--focus-ring);
@@ -355,8 +359,8 @@ button[data-close-modal] {
 	border: none;
 
 	position: absolute;
-	inset-block-start: calc(var(--page-gutter) + 0.25lh);
-	inset-inline-end: var(--page-gutter);
+	inset-block-start: calc(var(--space-s-m) + 0.25lh);
+	inset-inline-end: var(--space-s-m);
 	padding: 0.25lh 1ch;
 	background: transparent;
 	color: var(--color-primary);
