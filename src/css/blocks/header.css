@@ -1,6 +1,6 @@
 .site-header {
 	padding-inline: var(--dynamic-gutter);
-	overflow: scroll;
+	overflow-x: auto;
 
 	> * {
 		flex-shrink: 0;
